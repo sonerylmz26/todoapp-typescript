@@ -43,7 +43,7 @@ try {
 const postAddtoDo:AddFn = async(text) => {
       try {
             await axios.post<TodoType[]>(`${url}/todos`, {todo:text, isDone:false})
-           notify("Todo Eklediniz", "")
+           notify("Todo Eklediniz", "success")
       } catch (error) {
             console.log(error)
       } finally{
@@ -55,7 +55,7 @@ const postAddtoDo:AddFn = async(text) => {
 const toggleTodo:ToggleFn = async(todo) => {
       try {
             await axios.put<TodoType[]>(`${url}/todos/${todo.id}`, {...todo, isDone: !todo.isDone})
-           
+            notify("The todo was not updated successfully!", "error");
       } catch (error) {
             console.log(error)
       } finally{
@@ -67,6 +67,7 @@ const toggleTodo:ToggleFn = async(todo) => {
 const deleteTodo: DeleteFn = async (id) => {
       try {
         await axios.delete(`${url}/todos/${id}`);
+        notify("The todo was deleted successfully!", "success");
       } catch (error) {
         console.log(error);
       } finally {

@@ -13,14 +13,17 @@ const TodoList: React.FC<ITodoList> = ({ todos ,toggleTodo,deleteTodo }) => {
   const completedTodos = todos.filter(item => item.isDone);
   return (
     <Grid
+    
       container
       sx={{
+        mt:10,
         d: "flex",
         justifyContent: "center",
         alignItems: "center",
-        gap: "0.5rem",
+        gap: "2rem",
       }}>
       <Grid
+      className="card"
         item
         xs={12}
         sm={5}
@@ -43,6 +46,7 @@ const TodoList: React.FC<ITodoList> = ({ todos ,toggleTodo,deleteTodo }) => {
         )}
       </Grid>
       <Grid
+      className="card"
         item
         xs={12}
         sm={5}

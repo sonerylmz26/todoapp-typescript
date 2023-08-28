@@ -12,9 +12,11 @@ interface ITodoListItem {
 const TodoListItem:React.FC<ITodoListItem> = ({todo, deleteTodo, toggleTodo}) => {
   return (
     <ListItem
+ 
       disableGutters
       secondaryAction={
-        <IconButton onClick={() => deleteTodo(todo.id)} aria-label="comment">
+        <IconButton onClick={() => deleteTodo(todo.id)} aria-label="comment"
+        sx={{ "&:hover": { color: "red" } }}>
          <DeleteIcon />
         </IconButton>
       }>

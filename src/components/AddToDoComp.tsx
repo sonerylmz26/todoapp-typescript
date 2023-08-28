@@ -13,8 +13,9 @@ const AddToDoComp = ({postAddtoDo}: IAddToDoComp ) => {
         setText("")
       }
   return (
-<Container>
+<Container sx={{mt:10}}>
       <Box
+      
         sx={{
           display: { xs: "block", sm: "flex" },
           justifyContent: "center",
