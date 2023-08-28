@@ -2,21 +2,23 @@ import { IconButton, ListItem, ListItemText } from '@mui/material';
 import DeleteIcon from "@mui/icons-material/Delete";
 
 interface ITodoListItem {
-      todo: TodoType[];
+      todo: TodoType;
+      deleteTodo: DeleteFn;
+      toggleTodo: ToggleFn;
     }
     
 
 
-const TodoListItem:React.FC<ITodoListItem> = ({todo}) => {
+const TodoListItem:React.FC<ITodoListItem> = ({todo, deleteTodo, toggleTodo}) => {
   return (
     <ListItem
       disableGutters
       secondaryAction={
-        <IconButton aria-label="comment">
+        <IconButton onClick={() => deleteTodo(todo.id)} aria-label="comment">
          <DeleteIcon />
         </IconButton>
       }>
-      <ListItemText  primary={todo.todo} />
+      <ListItemText onClick={() => toggleTodo(todo)}  primary={todo.todo} />
     </ListItem>
   );
 }

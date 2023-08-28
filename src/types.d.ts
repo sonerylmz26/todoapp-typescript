@@ -7,3 +7,7 @@ interface TodoType {
       "id": string | number;  
                   }
 
+                  type ToggleFn = (todo:TodoType) => Promise<void>;
+
+                  type DeleteFn = (id: string | number) => Promise<void>;
+                  

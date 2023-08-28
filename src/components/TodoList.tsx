@@ -3,10 +3,12 @@ import React from "react";
 import TodoListItem from "./TodoListItem";
 
 interface ITodoList {
-  todos: TodoType[];
-}
+      todos: TodoType[];
+      deleteTodo:DeleteFn;
+      toggleTodo:ToggleFn
+    }
 
-const TodoList: React.FC<ITodoList> = ({ todos }) => {
+const TodoList: React.FC<ITodoList> = ({ todos ,toggleTodo,deleteTodo }) => {
   const progressTodos = todos.filter(item => !item.isDone);
   const completedTodos = todos.filter(item => item.isDone);
   return (
@@ -32,7 +34,8 @@ const TodoList: React.FC<ITodoList> = ({ todos }) => {
           InProgress Todos
         </Typography>
         {progressTodos.length ? (
-          progressTodos.map(todo => <TodoListItem todo={todo} />)
+          progressTodos.map(todo => <TodoListItem todo={todo}  deleteTodo={deleteTodo}
+            toggleTodo={toggleTodo}/>)
         ) : (
           <Typography color="error" mt={3}>
             No Progress todos!{" "}
@@ -53,7 +56,9 @@ const TodoList: React.FC<ITodoList> = ({ todos }) => {
           Completed Todos
         </Typography>
         {completedTodos.length ? (
-          completedTodos.map(todo => <TodoListItem  />)
+          completedTodos.map(todo => <TodoListItem    todo={todo}
+            deleteTodo={deleteTodo}
+            toggleTodo={toggleTodo} />)
         ) : (
           <Typography color="error" mt={3}>
             No Completed todos!{" "}
